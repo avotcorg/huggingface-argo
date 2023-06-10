@@ -7,6 +7,7 @@ sdk: docker
 pinned: false
 license: mit
 ---
+
 Check out the configuration reference at [https://huggingface.co/docs/hub/spaces-config-reference](https://huggingface.co/docs/hub/spaces-config-reference)
 
 ## 使用方法
@@ -66,15 +67,37 @@ space 名 image-and-3d-model-creator
 
 ## 用到的变量
 
-| 变量名       | 是否必须 | 默认值                               | 备注                                                                                                                  |
-| ------------ | -------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
-| UUID         | 否       | de04add9-5c68-8bab-950c-08cd5320df18 | 可在线生成[https://www.zxgj.cn/g/uuid](https://www.zxgj.cn/g/uuid) 或者用 V2rayN                                         |
-| WSPATH       | 否       | argo                                 | 勿以 / 开头，各协议路径为 `/WSPATH-协议`，如 `/argo-vless`,`/argo-vmess`,`/argo-trojan`,`/argo-shadowsocks` |
-| NEZHA_SERVER | 否       |                                      | 哪吒探针与面板服务端数据通信的 IP 或域名                                                                              |
-| NEZHA_PORT   | 否       |                                      | 哪吒探针服务端的端口                                                                                                  |
-| NEZHA_KEY    | 否       |                                      | 哪吒探针客户端专用 Key                                                                                                |
-| ARGO_AUTH    | 否       |                                      | Argo 的 Token 或者 json 值                                                                                            |
-| ARGO_DOMAIN  | 否       |                                      | Argo 的域名，须与 ARGO_DOMAIN 必需一起填了才能生效                                                                    |
+|           变量名           | 是否必须 |                     默认值                     | 备注                                                                                                        |
+| :------------------------: | :------: | :--------------------------------------------: | :---------------------------------------------------------------------------------------------------------- |
+|            UUID            |    否    |      de04add9-5c68-8bab-950c-08cd5320df18      | 可在线生成[https://www.zxgj.cn/g/uuid](https://www.zxgj.cn/g/uuid) 或者用 V2rayN                            |
+|           WSPATH           |    否    |                      argo                      | 勿以 / 开头，各协议路径为 `/WSPATH-协议`，如 `/argo-vless`,`/argo-vmess`,`/argo-trojan`,`/argo-shadowsocks` |
+|            PORT            |    否    |                      3000                      | 容器默认 listen 0.0.0.0  的端口                                                                             |
+|        NEZHA_SERVER        |    否    |                                                | Nezha 的服务地址                                                                                            |
+|         NEZHA_PORT         |    否    |                                                | Nezha 的服务端口                                                                                            |
+|         NEZHA_KEY          |    否    |                                                | Nezha 的 key                                                                                                |
+|         ARGO_AUTH          |    否    |                                                | Argo 项目的认证信息 TOKEN 值                                                                                |
+|        ARGO_DOMAIN         |    否    |                                                | Argo 的域名，须与 ARGO_DOMAIN 必需一起填了才能生效                                                          |
+|    TARGET_HOSTNAME_URL     |    否    | [http://127.0.0.1:8081](http://127.0.0.1:8081) | 使用 v2board 时候可以自定义设置                                                                             |
+|     MAX_MEMORY_RESTART     |    否    |                     128MB                      | PM2 重启时的内存阈值 限制内存使用                                                                           |
+|        SSH_PUB_KEY         |    否    |                                                | 设置 Public Key 用于 ssh 连接 一般不需要设置<br />除非你需要 ssh 连接 例如  ssh-rsa AAAAB3NzaC1yc2EAAA...   |
+| TUNNEL_TRANSPORT_PROTOCOL  |    否    |                      quic                      | 设置 cloudflared 传输协议<br />默认为 quic 可选 http2 <br />对于某些网络不稳定的情况可以尝试 http2          |
+| **接入 v2bord 用到的变量** |    -     |                       -                        |                                                                                                             |
+|          API_HOST          |    是    |                                                | v2board API 服务的域名 URL<br />格式是[https://example.com](https://example.com) \*必须                     |
+|          API_KEY           |    是    |                                                | 在 v2board 获取\*必须                                                                                       |
+|        CERT_DOMAIN         |    否    |                                                | example.com 域名可以顺便填 或者不填                                                                         |
+|          NODE_ID           |    是    |                                                | 是 数字 在 v2board 获取\*必须                                                                               |
+
+## 用到的路径 path
+
+| 命令           | 说明                  |
+| -------------- | --------------------- |
+| `<URL>`/list   | 查看节点数据          |
+| `<URL>`/status | 查看后台进程 目录权限 |
+| `<URL>`/listen | 查看后台监听端口      |
+| `<URL>`/test   | 测试是否为只读系统    |
+| `<URL>`/ip     | 查看 IP 网络连接      |
+| `<URL>`/env    | 查看系统所有环境变量  |
+| `<URL>`/info   | 查看系统信息          |
 
 ## 推荐使用 SSH
 
