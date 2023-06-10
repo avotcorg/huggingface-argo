@@ -1,5 +1,5 @@
 ---
-title: Paas huggingface Xray argo Test
+title: huggingface Xray argo
 emoji: 🐢
 colorFrom: yellow
 colorTo: gray
@@ -30,9 +30,13 @@ upload files
 例如：
 abcdefg-image-and-3d-model-creator.hf.space
 用户名 abcdefg
+
 space 名 image-and-3d-model-creator
 
-第二种方法查看域名 鼠标右键点 view frame source
+第二种方法查看域名:
+
+鼠标右键点 view frame source
+
 ![1686297209557](image/README/1686297209557.png)
 
 ## 环境变量说明（更多的使用说明）
@@ -66,3 +70,5 @@ cloudflared.exe access tcp --hostname huggingface-paas-test-ssh.xxx.xxx --listen
 ## 设置图
 
 ![1686287227901](image/README/1686287227901.png)
+
+协议 设置为 TCP 或者 SSH.
